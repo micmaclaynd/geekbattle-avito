@@ -1,0 +1,38 @@
+{
+    "ApiGateway": {
+        "Url": "http://127.0.0.1:5000",
+        "Http": {
+            "Cookies": {
+                "AuthToken": "authToken"
+            },
+            "Headers": {
+                "UserId": "User-Id"
+            }
+        },
+        "Router": {
+            "DefaultContentType": "application/json",
+            "DefaultTransferEncoding": "gzip",
+            "Routes": [
+                {
+                    "Path": "/api/auth",
+                    "ProxyUri": "http://127.0.0.1:5001/api/auth",
+                    "IsNestedUrls": true,
+                    "Methods": [ "GET", "POST" ]
+                },
+                {
+                    "Path": "/api/users",
+                    "ProxyUri": "http://127.0.0.1:5002/api/users",
+                    "IsNestedUrls": true,
+                    "Methods": [ "GET", "POST" ]
+                },
+                {
+                    "Path": "/api/analytics",
+                    "ProxyUri": "http://127.0.0.1:5003/api/analytics",
+                    "IsRequiredAuth": true,
+                    "IsNestedUrls": true,
+                    "Methods": [ "GET", "POST" ]
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "Auth": {
+        "Url": "http://127.0.0.1:5001",
+        "Database": {
+            "ConnectionString": "Server=HOST; Database=DATABASE; Username=USERNAME; Password=PASSWORD; Charset=CHARSET"
+        },
+        "Swagger": {
+            "RoutePrefix": "api/auth/swagger",
+            "RouteTemplate": "api/auth/swagger/{documentName}/swagger.json"
+        },
+        "JwtToken": {
+            "SecurityKey": "JWT_TOKEN_SECURITY_KEY",
+            "EncryptionAlgorithm": "HS512",
+            "Expiration": 86400,
+            "Fields": {
+                "UserId": "userId",
+                "Expiration": "exp"
+            }
+        },
+        "Endpoints": {
+            "Login": {
+                "Queue": "login-user",
+                "Exchange": "loginuser",
+                "Uri": "exchange:loginuser?type=direct&autodelete=true&durable=false"
+            },
+            "Register": {
+                "Queue": "register-user",
+                "Exchange": "registeruser",
+                "Uri": "exchange:registeruser?type=direct&autodelete=true&durable=false"
+            },
+            "Verify": {
+                "Queue": "verify-token",
+                "Exchange": "verifytoken",
+                "Uri": "exchange:verifytoken?type=direct&autodelete=true&durable=false"
+            }
+        }
+    }
+}

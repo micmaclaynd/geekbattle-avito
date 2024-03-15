@@ -1,0 +1,27 @@
+{
+    "Users": {
+        "Url": "http://127.0.0.1:5002",
+        "Database": {
+            "ConnectionString": "Server=HOST; Database=DATABASE; Username=USERNAME; Password=PASSWORD; Charset=CHARSET"
+        },
+        "Endpoints": {
+            "GetUserById": {
+                "Queue": "get-user-by-id",
+                "Exchange": "getuser",
+                "RoutingKey": "byid",
+                "Uri": "exchange:getuser?type=direct&autodelete=true&durable=false"
+            },
+            "GetUserByUsername": {
+                "Queue": "get-user-by-username",
+                "Exchange": "getuser",
+                "RoutingKey": "byusername",
+                "Uri": "exchange:getuser?type=direct&autodelete=true&durable=false"
+            },
+            "CreateUser": {
+                "Queue": "create-user",
+                "Exchange": "createuser",
+                "Uri": "exchange:createuser?type=direct&autodelete=true&durable=false"
+            }
+        }
+    }
+}
